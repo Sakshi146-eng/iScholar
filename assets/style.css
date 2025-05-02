@@ -1,0 +1,14 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+}
+input, select {
+    padding: 8px;
+    margin: 6px;
+}
+form {
+    display: inline-block;
+    padding: 20px;
+    border: 1px solid #ddd;
+}

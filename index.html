@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Loan & Scholarship Portal</title>
+    <style>
+        body {
+            background: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        .hero {
+            max-width: 480px;
+            margin: 80px auto 0 auto;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+            padding: 40px 28px 32px 28px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+            color: #1976d2;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+        .hero p {
+            color: #333;
+            font-size: 1.1rem;
+            margin-bottom: 32px;
+        }
+        .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: center;
+        }
+        .actions a {
+            display: inline-block;
+            min-width: 180px;
+            padding: 12px 0;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #66a6ff 0%, #89f7fe 100%);
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.08rem;
+            text-decoration: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            transition: background 0.2s, transform 0.2s;
+        }
+        .actions a:hover {
+            background: linear-gradient(90deg, #89f7fe 0%, #66a6ff 100%);
+            transform: translateY(-2px) scale(1.03);
+        }
+        @media (max-width: 600px) {
+            .hero {
+                margin: 30px 2vw 0 2vw;
+                padding: 24px 8vw 18px 8vw;
+            }
+            .hero h1 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>🎓 Welcome to the Scholarship Portal</h1>
+        <p>This platform helps Indian students find and apply for scholarships & education loans easily.</p>
+        <div class="actions">
+            <a href="registration.php">Register as Student</a>
+            <a href="admin/admin_register.php">Register as Admin</a>
+        </div>
+    </div>
+</body>
+</html>

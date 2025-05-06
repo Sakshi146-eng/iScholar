@@ -27,10 +27,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($conn->query($sql)) {
         $message = "Scholarship added successfully!";
         $message_class = 'success';
+        $new_id = $conn->insert_id;
+        header("Location: add_requirements.php?scholarship_id=$new_id");
+        exit();
     } else {
         $message = "Error: " . $conn->error;
         $message_class = 'error';
     }
+}
+
+$pending_count = 0;
+$pending_result = $conn->query("SELECT COUNT(*) as cnt FROM applications WHERE status = 'Pending'");
+if ($pending_result && $row = $pending_result->fetch_assoc()) {
+    $pending_count = (int)$row['cnt'];
 }
 ?>
 <!DOCTYPE html>
@@ -142,10 +151,47 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             background: linear-gradient(90deg, #f09819 0%, #ff5858 100%);
             transform: translateY(-2px) scale(1.03);
         }
+        .notif-badge {
+            display: inline-block;
+            background: #ff5858;
+            color: #fff;
+            font-weight: bold;
+            border-radius: 50%;
+            padding: 3px 10px;
+            margin-left: 8px;
+            font-size: 1rem;
+            vertical-align: middle;
+            box-shadow: 0 0 6px #ff5858cc;
+            animation: notif-pop 0.7s cubic-bezier(.68,-0.55,.27,1.55) 1;
+        }
+        @keyframes notif-pop {
+            0% { transform: scale(0.5); opacity: 0.5; }
+            70% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+        .view-btn {
+            display: inline-block;
+            margin-bottom: 18px;
+            background: linear-gradient(90deg, #ffd200 0%, #f7971e 100%);
+            color: #fff;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 22px;
+            text-decoration: none;
+            font-size: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            transition: background 0.2s, transform 0.2s;
+        }
+        .view-btn:hover {
+            background: linear-gradient(90deg, #f7971e 0%, #ffd200 100%);
+            transform: translateY(-2px) scale(1.03);
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <a href="view_scholarships.php" class="view-btn">View All Scholarships</a>
         <a href="../logout.php" class="logout-btn">Logout</a>
         <h2>Add New Scholarship</h2>
         <?php if ($message) echo '<div class="msg ' . $message_class . '">' . htmlspecialchars($message) . '</div>'; ?>
@@ -161,7 +207,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <textarea name="description" placeholder="Scholarship Description" required></textarea>
             <input type="submit" value="Add Scholarship">
         </form>
-        <a class="view-link" href="view_applications.php">View Applications</a>
+        <a class="view-link" href="view_applications.php">
+            View Applications
+            <?php if ($pending_count > 0) { ?>
+                <span class="notif-badge"><?php echo $pending_count; ?></span>
+            <?php } ?>
+        </a>
     </div>
 </body>
 </html>

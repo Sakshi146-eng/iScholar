@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['app_id'], $_POST['act
     $conn->query("UPDATE applications SET status='$action' WHERE app_id=$app_id");
 }
 
-$sql = "SELECT a.app_id, s.name AS student_name, sc.name AS scholarship_name, a.status
+$sql = "SELECT a.app_id, s.name AS student_name, sc.name AS scholarship_name, a.status, s.gpa, s.income, s.category, s.caste, s.state, s.year, s.course
         FROM applications a
         JOIN students s ON a.student_id = s.student_id
         JOIN scholarships sc ON a.scholarship_id = sc.scholarship_id
@@ -107,6 +107,16 @@ $result = $conn->query($sql);
             color: #ff9800;
             text-decoration: underline;
         }
+        th.right, td.right {
+            text-align: right;
+        }
+        td {
+            vertical-align: middle;
+        }
+        th, td {
+            /* word-break: break-word; */
+            white-space: nowrap;
+        }
         @media (max-width: 600px) {
             .container {
                 padding: 12px 2vw;
@@ -125,6 +135,15 @@ $result = $conn->query($sql);
                 margin-bottom: 12px;
             }
         }
+        .info-link {
+            color: #1976d2;
+            text-decoration: underline;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .info-link:hover {
+            color: #f7971e;
+        }
     </style>
 </head>
 <body>
@@ -135,26 +154,30 @@ $result = $conn->query($sql);
                 <th>ID</th>
                 <th>Student</th>
                 <th>Scholarship</th>
+                <th>GPA/Marks</th>
+                <th>Family Income</th>
+                <th>Category</th>
+                <th>Caste</th>
+                <th>State</th>
+                <th>Year of Study</th>
+                <th>Course</th>
                 <th>Status</th>
-                <th>Action</th>
+                <th>Info</th>
             </tr>
             <?php while ($row = $result->fetch_assoc()) { ?>
                 <tr>
                     <td><?= htmlspecialchars($row['app_id']) ?></td>
                     <td><?= htmlspecialchars($row['student_name']) ?></td>
                     <td><?= htmlspecialchars($row['scholarship_name']) ?></td>
+                    <td><?= htmlspecialchars($row['gpa']) ?></td>
+                    <td><?= htmlspecialchars($row['income']) ?></td>
+                    <td><?= htmlspecialchars($row['category']) ?></td>
+                    <td><?= htmlspecialchars($row['caste']) ?></td>
+                    <td><?= htmlspecialchars($row['state']) ?></td>
+                    <td><?= htmlspecialchars($row['year']) ?></td>
+                    <td><?= htmlspecialchars($row['course']) ?></td>
                     <td><?= htmlspecialchars($row['status']) ?></td>
-                    <td>
-                        <?php if ($row['status'] === 'Pending') { ?>
-                            <form method="POST" style="display:inline;">
-                                <input type="hidden" name="app_id" value="<?= $row['app_id'] ?>">
-                                <button type="submit" name="action" value="accept" class="action-btn accept">Accept</button>
-                                <button type="submit" name="action" value="reject" class="action-btn reject">Reject</button>
-                            </form>
-                        <?php } else { ?>
-                            -
-                        <?php } ?>
-                    </td>
+                    <td><a href="view_application_details.php?app_id=<?= $row['app_id'] ?>" class="info-link">View Details</a></td>
                 </tr>
             <?php } ?>
         </table>

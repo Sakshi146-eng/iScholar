@@ -46,46 +46,75 @@ $result = $conn->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Scholarship Portal</title>
     <style>
+        html {
+            background: transparent !important;
+        }
         body {
-            background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+            background: linear-gradient(135deg, rgba(79,91,213,0.85) 0%, rgba(95,44,130,0.7) 100%), url('assets/background1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .logout-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-top: 40px;
+            margin-bottom: -40px;
+            padding-right: 40px;
+            z-index: 30;
         }
         .container {
-            max-width: 900px;
-            margin: 40px auto;
-            background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
-            padding: 32px 32px 24px 32px;
+            max-width: 700px;
+            margin: 100px auto 40px auto;
+            background: rgba(255,255,255,0.85);
+            border-radius: 24px;
+            box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.10);
+            padding: 32px 8px 32px 8px;
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
         }
         .header {
             text-align: center;
             margin-bottom: 30px;
         }
         .header h2 {
-            color: #2d3a4b;
+            color: #232946;
             margin-bottom: 8px;
+            text-transform: capitalize;
         }
         .header h3 {
-            color: #f57c00;
+            color: #ff9800;
             font-weight: 500;
         }
         .scholarships {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            display: flex;
+            flex-direction: column;
             gap: 24px;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
         }
         .card {
             background: #f7fafc;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-            padding: 24px 18px 18px 18px;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(31, 38, 135, 0.07);
+            padding: 28px 24px 22px 24px;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
         }
         .card strong {
             font-size: 1.2rem;
@@ -100,7 +129,7 @@ $result = $conn->query($sql);
             width: 100%;
         }
         .card input[type="submit"] {
-            background: linear-gradient(90deg, #fda085 0%, #f6d365 100%);
+            background: linear-gradient(90deg, #a259ff 0%, #ff6ec4 100%);
             color: #fff;
             font-weight: bold;
             border: none;
@@ -111,7 +140,7 @@ $result = $conn->query($sql);
             transition: background 0.2s;
         }
         .card input[type="submit"]:hover {
-            background: linear-gradient(90deg, #f6d365 0%, #fda085 100%);
+            background: linear-gradient(90deg, #ff6ec4 0%, #a259ff 100%);
         }
         .no-scholarships {
             text-align: center;
@@ -119,17 +148,19 @@ $result = $conn->query($sql);
             font-size: 1.1rem;
             margin-top: 30px;
         }
-        @media (max-width: 600px) {
+        @media (max-width: 900px) {
             .container {
-                padding: 12px 2vw;
+                max-width: 98vw;
+                padding: 12px 2vw 12px 2vw;
+                margin: 80px auto 24px auto;
+            }
+            .logout-wrapper {
+                padding-right: 10px;
+                margin-top: 24px;
             }
         }
         .logout-btn {
-            display: inline-block;
-            float: right;
-            margin-top: -10px;
-            margin-right: -10px;
-            background: linear-gradient(90deg, #ff5858 0%, #f09819 100%);
+            background: linear-gradient(90deg, #a259ff 0%, #ff6ec4 100%);
             color: #fff;
             font-weight: bold;
             border: none;
@@ -137,18 +168,23 @@ $result = $conn->query($sql);
             padding: 10px 22px;
             text-decoration: none;
             font-size: 1rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            box-shadow: 0 2px 8px rgba(162,89,255,0.13);
             transition: background 0.2s, transform 0.2s;
         }
         .logout-btn:hover {
-            background: linear-gradient(90deg, #f09819 0%, #ff5858 100%);
+            background: linear-gradient(90deg, #ff6ec4 0%, #a259ff 100%);
             transform: translateY(-2px) scale(1.03);
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <header>
+        <a href="index.html" class="header-title"><img src="assets/b5.png" alt="iScholar Logo" style="height:72px;vertical-align:middle;border-radius:12px;"></a>
+    </header>
+    <div class="logout-wrapper">
         <a href="logout.php" class="logout-btn">Logout</a>
+    </div>
+    <div class="container">
         <div class="header">
             <h2>Welcome, <?php echo htmlspecialchars($student['name']); ?>!</h2>
             <h3>Eligible Scholarships</h3>

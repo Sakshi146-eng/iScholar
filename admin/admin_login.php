@@ -29,22 +29,59 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login - Scholarship Portal</title>
+    <title>iScholar | Admin Login</title>
     <style>
         body {
-            background: linear-gradient(120deg, #43e97b 0%, #38f9d7 100%);
+            background: linear-gradient(135deg, rgba(79,91,213,0.85) 0%, rgba(95,44,130,0.7) 100%), url('../assets/b4.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            position: relative;
             margin: 0;
             padding: 0;
             min-height: 100vh;
+            overflow-x: hidden;
+        }
+        body::before {
+            content: none !important;
+            display: none !important;
+        }
+        header {
+            width: 100%;
+            background: transparent;
+            color: #fff;
+            padding: 22px 0 16px 40px;
+            text-align: left;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            box-shadow: none;
+            z-index: 200;
+            position: relative;
+        }
+        footer {
+            width: 100%;
+            background: #232323;
+            color: #fff;
+            text-align: center;
+            padding: 18px 0 12px 0;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            z-index: 200;
+            box-shadow: 0 -2px 8px rgba(26,35,126,0.10);
         }
         .container {
-            max-width: 370px;
-            margin: 70px auto;
-            background: #fff;
+            max-width: 400px;
+            margin: 60px auto;
+            background: rgba(255,255,255,0.65);
             border-radius: 16px;
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
             padding: 32px 24px 24px 24px;
+            position: relative;
+            z-index: 10;
         }
         h2 {
             text-align: center;
@@ -65,19 +102,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             transition: border 0.2s;
         }
         input:focus {
-            border: 1.5px solid #43e97b;
+            border: 1.5px solid #66a6ff;
             outline: none;
         }
         input[type="submit"] {
-            background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+            background: linear-gradient(90deg, #a259ff 0%, #ff6ec4 100%);
             color: #fff;
             font-weight: bold;
             border: none;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: background 0.2s, color 0.2s;
         }
         input[type="submit"]:hover {
-            background: linear-gradient(90deg, #38f9d7 0%, #43e97b 100%);
+            background: linear-gradient(90deg, #ff6ec4 0%, #a259ff 100%);
+            color: #fff;
         }
         .msg {
             text-align: center;
@@ -88,6 +126,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </style>
 </head>
 <body>
+    <header>
+        <a href="../index.html" class="header-title"><img src="../assets/b5.png" alt="iScholar Logo" style="height:72px;vertical-align:middle;border-radius:12px;"></a>
+    </header>
     <div class="container">
         <h2>Admin Login</h2>
         <?php if ($login_error) echo '<div class="msg">' . htmlspecialchars($login_error) . '</div>'; ?>

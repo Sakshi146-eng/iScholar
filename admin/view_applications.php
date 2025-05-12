@@ -30,48 +30,82 @@ $result = $conn->query($sql);
     <title>Student Applications - Admin | Scholarship Portal</title>
     <style>
         body {
-            background: linear-gradient(120deg, #f7971e 0%, #ffd200 100%);
+            background: linear-gradient(135deg, rgba(79,91,213,0.85) 0%, rgba(95,44,130,0.7) 100%), url('../assets/b4.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             min-height: 100vh;
+            overflow-x: hidden;
         }
         .container {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 60px auto;
-            background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
-            padding: 32px 24px 24px 24px;
+            background: rgba(255,255,255,0.85);
+            border-radius: 24px;
+            box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.10);
+            padding: 40px 32px 32px 32px;
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         h2 {
             text-align: center;
-            color: #b26a00;
+            color: #232946;
             margin-bottom: 24px;
+        }
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
         }
         table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 18px;
-            background: #fafafa;
-            border-radius: 8px;
+            background: #f7fafc;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
         }
         th, td {
-            padding: 12px 10px;
+            padding: 12px 16px;
             text-align: left;
+            white-space: nowrap;
         }
         th {
-            background: #ffd200;
-            color: #333;
-            font-weight: 600;
+            background: #ece9fc;
+            color: #232946;
+            font-weight: 700;
+            border-bottom: 2px solid #e0e0e0;
         }
-        tr:nth-child(even) {
-            background: #f7fafc;
+        td {
+            color: #232946;
+            border-bottom: 1px solid #e0e0e0;
         }
-        tr:hover {
-            background: #fffde7;
+        tr:last-child td {
+            border-bottom: none;
+        }
+        .back-link {
+            color: #a259ff;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 18px;
+            display: inline-block;
+            transition: color 0.2s;
+        }
+        .back-link:hover {
+            color: #ff6ec4;
+            text-decoration: underline;
+        }
+        @media (max-width: 700px) {
+            .container {
+                padding: 18px 4px 12px 4px;
+            }
+            th, td {
+                padding: 8px 8px;
+            }
         }
         .action-btn {
             padding: 7px 18px;
@@ -94,46 +128,6 @@ $result = $conn->query($sql);
         }
         .reject:hover {
             background: linear-gradient(90deg, #f09819 0%, #ff5858 100%);
-        }
-        .back-link {
-            display: inline-block;
-            margin-top: 10px;
-            color: #b26a00;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        .back-link:hover {
-            color: #ff9800;
-            text-decoration: underline;
-        }
-        th.right, td.right {
-            text-align: right;
-        }
-        td {
-            vertical-align: middle;
-        }
-        th, td {
-            /* word-break: break-word; */
-            white-space: nowrap;
-        }
-        @media (max-width: 600px) {
-            .container {
-                padding: 12px 2vw;
-            }
-            table, thead, tbody, th, td, tr {
-                display: block;
-            }
-            th, td {
-                padding: 10px 6vw;
-            }
-            th {
-                background: #ffd200;
-                color: #333;
-            }
-            tr {
-                margin-bottom: 12px;
-            }
         }
         .info-link {
             color: #1976d2;

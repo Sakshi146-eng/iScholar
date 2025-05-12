@@ -17,75 +17,91 @@ $scholarships = $conn->query("SELECT * FROM scholarships ORDER BY scholarship_id
     <title>All Scholarships - Admin | Scholarship Portal</title>
     <style>
         body {
-            background: linear-gradient(120deg, #f7971e 0%, #ffd200 100%);
+            background: linear-gradient(135deg, rgba(79,91,213,0.85) 0%, rgba(95,44,130,0.7) 100%), url('../assets/b4.jpg') no-repeat center center fixed;
+            background-size: cover;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             min-height: 100vh;
         }
-        .container {
-            max-width: 700px;
+        .card {
+            max-width: 900px;
             margin: 60px auto;
-            background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
-            padding: 32px 28px 24px 28px;
+            background: rgba(255,255,255,0.85);
+            border-radius: 24px;
+            box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.10);
+            padding: 40px 32px;
+            position: relative;
         }
         h2 {
             text-align: center;
-            color: #b26a00;
+            color: #4f5bd5;
             margin-bottom: 24px;
         }
         table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 18px;
-            background: #fafafa;
-            border-radius: 8px;
+            background: #f7fafc;
+            border-radius: 12px;
             overflow: hidden;
         }
         th, td {
-            padding: 12px 10px;
+            padding: 12px 16px;
             text-align: left;
+            white-space: nowrap;
         }
         th {
-            background: #ffd200;
-            color: #333;
-            font-weight: 600;
+            background: #ece9fc;
+            color: #232946;
+            font-weight: 700;
+            border-bottom: 2px solid #e0e0e0;
         }
-        tr:nth-child(even) {
-            background: #f7fafc;
+        td {
+            color: #232946;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        tr:last-child td {
+            border-bottom: none;
         }
         .edit-btn {
-            background: linear-gradient(90deg, #ffd200 0%, #f7971e 100%);
+            background: linear-gradient(90deg, #4f5bd5 0%, #a259ff 100%);
             color: #fff;
             font-weight: bold;
             border: none;
-            border-radius: 6px;
-            padding: 8px 22px;
-            cursor: pointer;
+            border-radius: 8px;
+            padding: 10px 22px;
             text-decoration: none;
-            transition: background 0.2s;
+            font-size: 1rem;
+            box-shadow: 0 2px 8px rgba(79, 91, 213, 0.13);
+            transition: all 0.3s ease;
+            display: inline-block;
         }
         .edit-btn:hover {
-            background: linear-gradient(90deg, #f7971e 0%, #ffd200 100%);
+            background: linear-gradient(90deg, #a259ff 0%, #4f5bd5 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(79, 91, 213, 0.2);
         }
         .back-link {
-            display: inline-block;
-            margin-top: 18px;
-            color: #b26a00;
+            color: #4f5bd5;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.2s;
+            margin-top: 18px;
+            display: inline-block;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 8px;
+            background: rgba(79, 91, 213, 0.1);
         }
         .back-link:hover {
-            color: #ff9800;
-            text-decoration: underline;
+            color: #a259ff;
+            background: rgba(162, 89, 255, 0.1);
+            transform: translateY(-2px);
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="card">
         <h2>All Scholarships</h2>
         <table>
             <tr>

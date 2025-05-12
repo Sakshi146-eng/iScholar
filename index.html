@@ -3,77 +3,453 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Loan & Scholarship Portal</title>
+    <title>Scholarship Portal | Main Page</title>
     <style>
+        html, body {
+            height: 100%;
+            width: 100vw;
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
         body {
-            background: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, rgba(79,91,213,0.85) 0%, rgba(95,44,130,0.7) 100%), url('assets/background1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            min-height: 100vh;
+            /* Remove any accidental horizontal overflow */
+            overflow-x: hidden;
         }
-        .hero {
-            max-width: 480px;
-            margin: 80px auto 0 auto;
-            background: #fff;
-            border-radius: 18px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
-            padding: 40px 28px 32px 28px;
+        .winner-header {
             text-align: center;
+            padding: 48px 0 24px 0;
         }
-        .hero h1 {
-            font-size: 2.2rem;
-            color: #1976d2;
-            margin-bottom: 12px;
+        .winner-header .scholarship-year {
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            opacity: 0.85;
+        }
+        .winner-header .winner-title {
+            font-size: 3.2rem;
+            font-weight: 800;
+            margin: 8px 0 0 0;
+            letter-spacing: 2px;
+        }
+        .winner-card {
+            background: #232946;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.18);
+            max-width: 370px;
+            margin: 0 auto 32px auto;
+            padding: 28px 32px 24px 32px;
+            text-align: left;
+            position: relative;
+        }
+        .winner-card .vt-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #fff;
             letter-spacing: 1px;
         }
-        .hero p {
-            color: #333;
-            font-size: 1.1rem;
-            margin-bottom: 32px;
+        .winner-card .vt-sub {
+            font-size: 0.95rem;
+            color: #b8c1ec;
+            margin-bottom: 18px;
         }
-        .actions {
+        .winner-card .winner-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+            color: #fff;
+        }
+        .winner-card .winner-program {
+            font-size: 1rem;
+            color: #eebbc3;
+            margin-bottom: 18px;
+        }
+        .winner-card .essay-btn {
+            display: inline-block;
+            background: linear-gradient(90deg, #a259ff 0%, #6a82fb 100%);
+            color: #fff;
+            font-weight: 600;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 28px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .winner-card .essay-btn:hover {
+            background: linear-gradient(90deg, #6a82fb 0%, #a259ff 100%);
+        }
+        .eligibility-section {
+            background: #fff;
+            color: #232946;
+            border-radius: 18px;
+            max-width: 900px;
+            margin: 0 auto 32px auto;
+            padding: 48px 32px 32px 32px;
+            text-align: center;
+            box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.10);
+            position: relative;
+        }
+        .eligibility-section .eligibility-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+        }
+        .eligibility-section .eligibility-desc {
+            font-size: 1.08rem;
+            color: #444;
+            margin-bottom: 36px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .eligibility-categories {
+            display: flex;
+            justify-content: center;
+            gap: 36px;
+            flex-wrap: wrap;
+        }
+        .eligibility-category {
+            background: linear-gradient(120deg, #4f5bd5 0%, #5f2c82 100%);
+            color: #fff;
+            border-radius: 12px;
+            padding: 22px 32px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            min-width: 220px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(31, 38, 135, 0.10);
+        }
+        @media (max-width: 700px) {
+            .winner-header .winner-title { font-size: 2.1rem; }
+            .eligibility-section { padding: 32px 8px 24px 8px; }
+            .eligibility-section .eligibility-title { font-size: 1.3rem; }
+            .eligibility-categories { gap: 12px; }
+            .eligibility-category { min-width: 120px; font-size: 0.98rem; padding: 14px 10px; }
+        }
+        .main-header {
+            width: 100%;
+            background: transparent;
+            color: #fff;
+            padding: 22px 0 16px 40px;
+            text-align: left;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 200;
+            flex-shrink: 0;
+        }
+        .header-title {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .header-actions {
+            display: flex;
+            gap: 12px;
+            margin-left: 0;
+            margin-right: 40px;
+        }
+        .header-actions a {
+            display: inline-block;
+            padding: 8px 18px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.65);
+            font-weight: bold;
+            font-size: 1rem;
+            text-decoration: none;
+            box-shadow: 0 2px 8px rgba(25, 118, 210, 0.13);
+            transition: background 0.2s, color 0.2s;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            color: transparent;
+        }
+        .header-actions a span {
+            background: linear-gradient(90deg, #a259ff 0%, #ff6ec4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            font-weight: bold;
+        }
+        .header-actions a:last-child {
+            margin-right: 24px;
+        }
+        @media (max-width: 700px) {
+            .main-header {
+                font-size: 1.2rem;
+                padding: 12px 0 10px 0;
+            }
+            .header-actions {
+                margin-right: 10px;
+            }
+            .header-title {
+                font-size: 1.2rem;
+            }
+        }
+        .ischolar-info-card {
+            background: rgba(255,255,255,0.10);
+            border-radius: 18px;
+            box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.10);
+            max-width: 700px;
+            margin: 40px auto 32px auto;
+            padding: 36px 32px 32px 32px;
+            text-align: center;
+            color: #fff;
+        }
+        .ischolar-info-card h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .ischolar-info-card p {
+            font-size: 1.15rem;
+            color: #e0e0e0;
+            margin-bottom: 0;
+        }
+        .ischolar-info-card.white-bg {
+            background: rgba(255,255,255,0.65);
+            color: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.10);
+            max-width: 900px;
+            margin: 40px auto 32px auto;
+            padding: 48px 32px 32px 32px;
+            text-align: center;
+            text-shadow: 0 2px 8px rgba(31,38,135,0.10);
+        }
+        .ischolar-info-card.white-bg h2 {
+            background: linear-gradient(90deg, #1976d2 0%, #00c6fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+            text-shadow: none;
+        }
+        .ischolar-info-card.white-bg p {
+            color: #232946;
+            font-size: 1.08rem;
+            margin-bottom: 0;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: none;
+        }
+        @media (max-width: 700px) {
+            .ischolar-info-card.white-bg {
+                padding: 32px 8px 24px 8px;
+            }
+            .ischolar-info-card.white-bg h2 {
+                font-size: 1.3rem;
+            }
+        }
+        .ischolar-info-card.wide-bg {
+            width: 100vw;
+            margin: 0;
+            padding: 0;
+            background: #fff;
+            color: #232946;
+            position: relative;
+            border-radius: 0 0 48px 48px/0 0 24px 24px;
+            box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.10);
+        }
+        .ischolar-info-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 56px 32px 32px 32px;
+            text-align: center;
+        }
+        .ischolar-info-content h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+        }
+        .ischolar-info-content p {
+            font-size: 1.08rem;
+            color: #444;
+            margin-bottom: 0;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .ischolar-wave {
+            display: block;
+            width: 100vw;
+            height: 80px;
+            margin: 0;
+            position: relative;
+            left: 0;
+            right: 0;
+            bottom: -1px;
+        }
+        @media (max-width: 700px) {
+            .ischolar-info-content {
+                padding: 32px 8px 18px 8px;
+            }
+            .ischolar-info-content h2 {
+                font-size: 1.3rem;
+            }
+            .ischolar-wave {
+                height: 40px;
+            }
+        }
+        .main-content {
+            flex: 1 0 auto;
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            justify-content: center;
+        }
+        .how-to-apply-section {
+            width: 100vw;
+            background: transparent;
+            color: #fff;
+            margin: 0;
+            padding: 48px 0 40px 0;
+            text-align: center;
+        }
+        .how-to-apply-card {
+            background: #fff;
+            color: #232946;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px 0 rgba(162, 89, 255, 0.10);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 32px 32px 32px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .how-to-apply-card h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 28px;
+            letter-spacing: 1px;
+            color: #a259ff;
+        }
+        .apply-steps {
+            display: flex;
+            justify-content: center;
+            gap: 36px;
+            flex-wrap: wrap;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .apply-step {
+            background: rgba(255,255,255,0.65);
+            color: #4f2c82;
+            border-radius: 18px;
+            box-shadow: 0 2px 8px rgba(162, 89, 255, 0.10);
+            flex: 1 1 220px;
+            min-width: 180px;
+            margin: 0 8px;
+            padding: 28px 18px 22px 18px;
+            display: flex;
+            flex-direction: column;
             align-items: center;
         }
-        .actions a {
-            display: inline-block;
-            min-width: 180px;
-            padding: 12px 0;
-            border-radius: 8px;
-            background: linear-gradient(90deg, #66a6ff 0%, #89f7fe 100%);
+        .apply-step .step-number {
+            background: linear-gradient(90deg, #a259ff 0%, #ff6ec4 100%);
             color: #fff;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
             font-weight: bold;
-            font-size: 1.08rem;
-            text-decoration: none;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-            transition: background 0.2s, transform 0.2s;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(162,89,255,0.13);
         }
-        .actions a:hover {
-            background: linear-gradient(90deg, #89f7fe 0%, #66a6ff 100%);
-            transform: translateY(-2px) scale(1.03);
+        .apply-step .step-title {
+            color: #a259ff;
         }
-        @media (max-width: 600px) {
-            .hero {
-                margin: 30px 2vw 0 2vw;
-                padding: 24px 8vw 18px 8vw;
+        .apply-step .step-desc {
+            color: #444;
+        }
+        @media (max-width: 900px) {
+            .apply-steps {
+                flex-direction: column;
+                gap: 18px;
             }
-            .hero h1 {
+            .apply-step {
+                margin: 0;
+            }
+        }
+        @media (max-width: 700px) {
+            .ischolar-info-card.white-bg {
+                padding: 32px 8px 24px 8px;
+            }
+            .ischolar-info-card.white-bg h2 {
                 font-size: 1.3rem;
+            }
+            .how-to-apply-section {
+                padding: 24px 0 18px 0;
+            }
+            .how-to-apply-card {
+                padding: 18px 4px 12px 4px;
+            }
+            .how-to-apply-card h2 {
+                font-size: 1.2rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="hero">
-        <h1>🎓 Welcome to the Scholarship Portal</h1>
-        <p>This platform helps Indian students find and apply for scholarships & education loans easily.</p>
-        <div class="actions">
-            <a href="registration.php">Register as Student</a>
-            <a href="admin/admin_register.php">Register as Admin</a>
+    <header class="main-header">
+        <a href="index.html" class="header-title" style="text-decoration:none;color:inherit;"><img src="assets/b5.png" alt="iScholar Logo" style="height:72px;vertical-align:middle;border-radius:12px;"></a>
+        <div class="header-actions">
+            <a href="registration.php"><span>Register as Student</span></a>
+            <a href="admin/admin_register.php"><span>Register as Admin</span></a>
         </div>
+    </header>
+    <div class="main-content">
+        <section class="ischolar-info-card white-bg">
+            <h2>Welcome to iScholar</h2>
+            <p>
+                <strong>iScholar</strong> is your one-stop platform to discover, apply, and track scholarships and education loans. Our mission is to bridge the gap between scholarship providers and seekers, making the process simple, transparent, and accessible for all students. Empower your academic journey and unlock new opportunities with iScholar.
+            </p>
+        </section>
+        <section class="how-to-apply-section">
+            <h2>How to Apply</h2>
+            <div class="apply-steps">
+                <div class="apply-step">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Register</div>
+                    <div class="step-desc">Sign up as a student or admin to get started on the portal.</div>
+                </div>
+                <div class="apply-step">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Explore Scholarships</div>
+                    <div class="step-desc">Browse and find scholarships and education loans that fit your profile.</div>
+                </div>
+                <div class="apply-step">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Apply & Track</div>
+                    <div class="step-desc">Apply online and track your application status from your dashboard.</div>
+                </div>
+            </div>
+        </section>
     </div>
 </body>
 </html>

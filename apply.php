@@ -69,25 +69,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['apply_submit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scholarship Application - Scholarship Portal</title>
     <style>
+        html {
+            background: transparent !important;
+        }
         body {
-            background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+            background: linear-gradient(135deg, rgba(79,91,213,0.85) 0%, rgba(95,44,130,0.7) 100%), url('assets/background1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             min-height: 100vh;
+            overflow-x: hidden;
         }
         .container {
-            max-width: 400px;
-            margin: 80px auto;
-            background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
-            padding: 32px 24px 24px 24px;
-            text-align: center;
+            max-width: 700px;
+            margin: 100px auto 40px auto;
+            background: rgba(255,255,255,0.85);
+            border-radius: 24px;
+            box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.10);
+            padding: 32px 24px;
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
         }
         h2 {
-            color: #1976d2;
+            color: #232946;
             margin-bottom: 18px;
+            text-align: center;
         }
         .msg {
             font-size: 1.1rem;
@@ -95,6 +107,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['apply_submit'])) {
             margin: 24px 0 10px 0;
             padding: 16px 10px;
             border-radius: 8px;
+            width: 100%;
+            text-align: center;
         }
         .success {
             background: #e3fcec;
@@ -121,38 +135,89 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['apply_submit'])) {
         form {
             text-align: left;
             margin-top: 20px;
+            width: 100%;
+            max-width: 100%;
         }
         label {
             font-weight: 500;
             display: block;
             margin-bottom: 6px;
+            color: #232946;
         }
         input, textarea, select {
             width: 100%;
             margin-bottom: 14px;
-            padding: 8px;
+            padding: 12px;
             border: 1px solid #b0bec5;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 1rem;
             background: #f7fafc;
+            box-sizing: border-box;
         }
         input[type="file"] {
-            padding: 0;
+            padding: 8px;
+            background: #fff;
         }
         input[type="submit"] {
-            background: linear-gradient(90deg, #1976d2 0%, #64b5f6 100%);
-            color: #fff;
+            background: #fff;
+            color: #232946;
             font-weight: bold;
             border: none;
+            border-radius: 8px;
+            padding: 12px 0;
+            width: 100%;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: background 0.2s, transform 0.2s;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+            /* Gradient text */
+            background: #fff;
+            background-clip: padding-box;
         }
         input[type="submit"]:hover {
-            background: linear-gradient(90deg, #64b5f6 0%, #1976d2 100%);
+            background: #f7fafc;
+            transform: translateY(-2px) scale(1.03);
+        }
+        input[type="submit"]::after {
+            content: attr(value);
+            display: block;
+            background: linear-gradient(90deg, #1976d2 0%, #00c6fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            font-weight: bold;
+            font-size: 1.1rem;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            z-index: 2;
+        }
+        input[type="submit"] {
+            color: transparent !important;
+        }
+        @media (max-width: 900px) {
+            .container {
+                max-width: 98vw;
+                padding: 24px 16px;
+                margin: 80px auto 24px auto;
+            }
         }
     </style>
 </head>
 <body>
+    <header>
+        <a href="index.html" class="header-title"><img src="assets/b5.jpg" alt="iScholar Logo" style="height:72px;vertical-align:middle;border-radius:12px;"></a>
+    </header>
     <div class="container">
         <h2>Scholarship Application</h2>
         <div class="msg <?php echo $message_class; ?>"><?php echo htmlspecialchars($message); ?></div>

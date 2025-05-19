@@ -39,6 +39,22 @@ $result = $conn->query($sql);
             min-height: 100vh;
             overflow-x: hidden;
         }
+        .main-header {
+            width: 100%;
+            background: transparent;
+            color: #fff;
+            padding: 22px 0 16px 40px;
+            text-align: left;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 200;
+            flex-shrink: 0;
+        }
         .container {
             max-width: 1200px;
             margin: 60px auto;
@@ -141,6 +157,9 @@ $result = $conn->query($sql);
     </style>
 </head>
 <body>
+    <header class="main-header">
+        <a href="../index.html" class="header-title" style="text-decoration:none;color:inherit;"><img src="../assets/b5.png" alt="iScholar Logo" style="height:72px;vertical-align:middle;border-radius:12px;"></a>
+    </header>
     <div class="container">
         <h2>Student Applications</h2>
         <table>

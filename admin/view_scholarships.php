@@ -24,6 +24,22 @@ $scholarships = $conn->query("SELECT * FROM scholarships ORDER BY scholarship_id
             padding: 0;
             min-height: 100vh;
         }
+        .main-header {
+            width: 100%;
+            background: transparent;
+            color: #fff;
+            padding: 22px 0 16px 40px;
+            text-align: left;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 200;
+            flex-shrink: 0;
+        }
         .card {
             max-width: 900px;
             margin: 60px auto;
@@ -101,6 +117,8 @@ $scholarships = $conn->query("SELECT * FROM scholarships ORDER BY scholarship_id
     </style>
 </head>
 <body>
+    <header class="main-header">
+        <a href="../index.html" class="header-title" style="text-decoration:none;color:inherit;"><img src="../assets/b5.png" alt="iScholar Logo" style="height:72px;vertical-align:middle;border-radius:12px;"></a>
     <div class="card">
         <h2>All Scholarships</h2>
         <table>

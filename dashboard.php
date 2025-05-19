@@ -60,11 +60,11 @@ $result = $conn->query($sql);
             overflow-x: hidden;
         }
         .logout-wrapper {
-            width: 100%;
+            width: 99%;
             display: flex;
             justify-content: flex-end;
             align-items: center;
-            margin-top: 40px;
+            margin-top: -44px;
             margin-bottom: -40px;
             padding-right: 40px;
             z-index: 30;

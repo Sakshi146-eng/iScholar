@@ -59,6 +59,22 @@ if ($pending_result && $row = $pending_result->fetch_assoc()) {
             min-height: 100vh;
             overflow-x: hidden;
         }
+        .main-header {
+            width: 100%;
+            background: transparent;
+            color: #fff;
+            padding: 22px 0 16px 40px;
+            text-align: left;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 200;
+            flex-shrink: 0;
+        }
         .container {
             max-width: 500px;
             margin: 60px auto;
@@ -138,11 +154,11 @@ if ($pending_result && $row = $pending_result->fetch_assoc()) {
             border: 1px solid #e57373;
         }
         .logout-wrapper {
-            width: 100%;
+            width: 99%;
             display: flex;
             justify-content: flex-end;
             align-items: center;
-            margin-top: 40px;
+            margin-top: -44px;
             margin-bottom: -40px;
             padding-right: 40px;
             z-index: 30;
@@ -224,6 +240,8 @@ if ($pending_result && $row = $pending_result->fetch_assoc()) {
     </style>
 </head>
 <body>
+    <header class="main-header">
+        <a href="../index.html" class="header-title" style="text-decoration:none;color:inherit;"><img src="../assets/b5.png" alt="iScholar Logo" style="height:72px;vertical-align:middle;border-radius:12px;"></a>
     <div class="logout-wrapper">
         <a href="../logout.php" class="logout-btn">Logout</a>
     </div>

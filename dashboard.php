@@ -38,6 +38,8 @@ $sql .= ")
         AND last_date >= CURDATE()";
 
 $result = $conn->query($sql);
+$query = "SELECT * FROM scholarships WHERE last_date >= CURDATE()";
+$result = mysqli_query($conn, $query);
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -59,7 +59,31 @@ if ($pending_result && $row = $pending_result->fetch_assoc()) {
             min-height: 100vh;
             overflow-x: hidden;
         }
-        .main-header {
+        .logout-wrapper {
+            width: 99%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-top: -44px;
+            margin-bottom: -40px;
+            padding-right: 40px;
+            z-index: 30;
+        }
+        
+        .container {
+            max-width: 500px;
+            margin: 60px auto;
+            background: rgba(255,255,255,0.75);
+            border-radius: 24px;
+            box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.10);
+            padding: 40px 32px 32px 32px;
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header {
             width: 100%;
             background: transparent;
             color: #fff;
@@ -74,19 +98,6 @@ if ($pending_result && $row = $pending_result->fetch_assoc()) {
             justify-content: space-between;
             z-index: 200;
             flex-shrink: 0;
-        }
-        .container {
-            max-width: 500px;
-            margin: 60px auto;
-            background: rgba(255,255,255,0.75);
-            border-radius: 24px;
-            box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.10);
-            padding: 40px 32px 32px 32px;
-            position: relative;
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
         .top-btns {
             display: flex;
@@ -153,16 +164,8 @@ if ($pending_result && $row = $pending_result->fetch_assoc()) {
             color: #d32f2f;
             border: 1px solid #e57373;
         }
-        .logout-wrapper {
-            width: 99%;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            margin-top: -44px;
-            margin-bottom: -40px;
-            padding-right: 40px;
-            z-index: 30;
-        }
+        
+        
         .logout-btn {
             background: linear-gradient(90deg, #a259ff 0%, #ff6ec4 100%);
             color: #fff;
@@ -177,7 +180,6 @@ if ($pending_result && $row = $pending_result->fetch_assoc()) {
         }
         .logout-btn:hover {
             background: linear-gradient(90deg, #ff6ec4 0%, #a259ff 100%);
-            color: #ffd200;
             transform: translateY(-2px) scale(1.03);
         }
         .view-link {
@@ -240,8 +242,9 @@ if ($pending_result && $row = $pending_result->fetch_assoc()) {
     </style>
 </head>
 <body>
-    <header class="main-header">
+    <header>
         <a href="../index.html" class="header-title" style="text-decoration:none;color:inherit;"><img src="../assets/b5.png" alt="iScholar Logo" style="height:72px;vertical-align:middle;border-radius:12px;"></a>
+    </header>
     <div class="logout-wrapper">
         <a href="../logout.php" class="logout-btn">Logout</a>
     </div>

@@ -67,6 +67,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             z-index: 200;
             flex-shrink: 0;
         }
+        .container {
+            max-width: 500px;
+            margin: 60px auto;
+            background: rgba(255,255,255,0.75);
+            border-radius: 24px;
+            box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.10);
+            padding: 40px 32px 32px 32px;
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
         .card {
             max-width: 900px;
             margin: 60px auto;
@@ -82,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             margin-bottom: 24px;
         }
         h3,strong{
-            color: #4f5bd5;
+           color: #232946;
         }
         table {
             width: 100%;

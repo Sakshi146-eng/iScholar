@@ -106,9 +106,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             outline: none;
         }
         input[type="submit"] {
-            width: 100%;
-            max-width: 420px;
-            margin-top: 10px;
+            background: linear-gradient(90deg, #a259ff 0%, #ff6ec4 100%);
+            color: #fff;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        input[type="submit"]:hover {
+            background: linear-gradient(90deg, #ff6ec4 0%, #a259ff 100%);
+            color: #fff;
         }
         @media (max-width: 700px) {
             .container {

@@ -119,6 +119,7 @@ $scholarships = $conn->query("SELECT * FROM scholarships ORDER BY scholarship_id
 <body>
     <header class="main-header">
         <a href="../index.html" class="header-title" style="text-decoration:none;color:inherit;"><img src="../assets/b5.png" alt="iScholar Logo" style="height:72px;vertical-align:middle;border-radius:12px;"></a>
+    </header>
     <div class="card">
         <h2>All Scholarships</h2>
         <table>

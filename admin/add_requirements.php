@@ -174,6 +174,7 @@ $requirements = $conn->query("SELECT * FROM scholarship_requirements WHERE schol
 <body>
     <header class="main-header">
         <a href="../index.html" class="header-title" style="text-decoration:none;color:inherit;"><img src="../assets/b5.png" alt="iScholar Logo" style="height:72px;vertical-align:middle;border-radius:12px;"></a>
+    </header>
     <div class="container">
         <h2>Add Requirements for "<?= htmlspecialchars($scholarship['name']) ?>"</h2>
         <form method="POST">

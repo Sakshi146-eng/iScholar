@@ -159,24 +159,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['apply_submit'])) {
             background: #fff;
         }
         input[type="submit"] {
-            background: #fff;
-            color: #232946;
+            background: linear-gradient(90deg, #a259ff 0%, #ff6ec4 100%);
+            color: #fff;
             font-weight: bold;
             border: none;
-            border-radius: 8px;
-            padding: 12px 0;
-            width: 100%;
             cursor: pointer;
-            transition: background 0.2s, transform 0.2s;
-            font-size: 1.1rem;
-            position: relative;
-            z-index: 1;
-            /* Gradient text */
-            background: #fff;
-            background-clip: padding-box;
+            border-radius: 8px;
+            padding: 10px 0;
+            font-size: 1rem;
+            transition: background 0.2s, color 0.2s;
         }
         input[type="submit"]:hover {
-            background: #f7fafc;
+            background: linear-gradient(90deg, #ff6ec4 0%, #a259ff 100%);
+            color: #fff;
             transform: translateY(-2px) scale(1.03);
         }
         input[type="submit"]::after {
@@ -202,9 +197,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['apply_submit'])) {
             pointer-events: none;
             z-index: 2;
         }
-        input[type="submit"] {
-            color: transparent !important;
-        }
+        
         @media (max-width: 900px) {
             .container {
                 max-width: 98vw;
@@ -216,7 +209,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['apply_submit'])) {
 </head>
 <body>
     <header>
-        <a href="index.html" class="header-title"><img src="assets/b5.jpg" alt="iScholar Logo" style="height:72px;vertical-align:middle;border-radius:12px;"></a>
+        <a href="index.html" class="header-title"><img src="assets/b5.png" alt="iScholar Logo" style="height:72px;vertical-align:middle;border-radius:12px;"></a>
     </header>
     <div class="container">
         <h2>Scholarship Application</h2>
